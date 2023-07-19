@@ -2,11 +2,40 @@
     "users": [
       {
         "rut": "11.111.111-1",
-        "password": "admin"
+        "password": "admin",
+        "type": "admin",
+        "nombre": "Adminisrador",
+        "apellido": "TheAdmin",
+        "mail": "administracion.web@gymnxyz.cl"
       },
       {
-        "rut": "98765432-1",
-        "password": "pass321"
+        "rut": "33.111.111-1",
+        "password": "client",
+        "type": "client",
+        "nombre": "Cliente01",
+        "apellido": "TheClient",
+        "mail": "mailgenerico.xd@gymnxyz.cl"
+      },
+      {
+        "rut": "22.111.111-1",
+        "password": "instructor",
+        "type": "instructor",
+        "nombre": "Instructor01",
+        "apellido": "TheInstructor",
+        "mail": "mailgenerico.xd2@gymnxyz.cl"
+      }
+    ],
+
+    "sessions": [
+      {
+        "Hora": "17:30",
+        "Fecha": "28/07/2023",
+        "Participantes": [
+          {
+            "RutParticipante": "33.111.111-1"
+          }
+        ],
+        "RUTInstructor":  "22.111.111-1"
       }
     ]
   }
