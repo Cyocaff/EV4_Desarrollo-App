@@ -12,7 +12,16 @@ function LoginUser(userRut,UserPass){
             localStorage.setItem('loggedInUserName', matchedUser.name);
             localStorage.setItem('loggedInUserLastName', matchedUser.lastname);
             localStorage.setItem('loggedInUserTypeOfUser', matchedUser.type);
-            alert(matchedUser.type);
+            if (matchedUser.type === 'admin'){
+                alert('User is an xd2')
+            }
+            if (matchedUser.type === 'xd'){
+                alert('User is a client')
+            }
+            if (matchedUser.type === 'xd3'){
+                alert('User is a instructor')
+            }
+
         } else{
             alert('Invalid')
         }
