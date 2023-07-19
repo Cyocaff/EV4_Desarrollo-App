@@ -3,7 +3,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gimnasio XYZ/ Login</title>
-    <script src="/script-modules/accounts.js"></script>
     <style>
         html{
             font-family: Arial, Helvetica, sans-serif;                
@@ -114,7 +113,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <button onclick="Func(inputrut.value,inputcon.value)">
+                                    <button onclick="LoginUser(inputrut.value,inputcon.value)">
                                         Ingresar
                                     </button>
                                     <h5>
@@ -133,5 +132,9 @@
             </table>
         </div>
     </center>
+    <script src="/script-modules/accounts-login.js"></script>
+    <script src="/script-modules/instructor-views.js"></script>
+    <script src="/script-modules/client-views.js"></script>
+    <script src="/script-modules/admin-views.js"></script>
 </body>
 </html>

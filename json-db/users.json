@@ -4,24 +4,24 @@
         "rut": "11.111.111-1",
         "password": "admin",
         "type": "admin",
-        "nombre": "Adminisrador",
-        "apellido": "TheAdmin",
-        "mail": "administracion.web@gymnxyz.cl"
+        "name": "Adminisrador",
+        "lastname": "TheAdmin",
+        "mail": "administracion.web@gymnxyz.cl" 
       },
       {
         "rut": "33.111.111-1",
         "password": "client",
         "type": "client",
-        "nombre": "Cliente01",
-        "apellido": "TheClient",
+        "name": "Cliente01",
+        "lastname": "TheClient",
         "mail": "mailgenerico.xd@gymnxyz.cl"
       },
       {
         "rut": "22.111.111-1",
         "password": "instructor",
         "type": "instructor",
-        "nombre": "Instructor01",
-        "apellido": "TheInstructor",
+        "name": "Instructor01",
+        "lastname": "TheInstructor",
         "mail": "mailgenerico.xd2@gymnxyz.cl"
       }
     ],

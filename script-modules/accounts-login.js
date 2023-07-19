@@ -1,4 +1,4 @@
-function Func(userRut,UserPass){
+function LoginUser(userRut,UserPass){
     fetch('../json-db/users.json')
     .then(response => response.json()) 
     .then (data => {
@@ -9,6 +9,10 @@ function Func(userRut,UserPass){
             alert('Logged')
             localStorage.setItem('loggedInUserRut', userRut);
             localStorage.setItem('loggedInUserPassword', UserPass);
+            localStorage.setItem('loggedInUserName', matchedUser.name);
+            localStorage.setItem('loggedInUserLastName', matchedUser.lastname);
+            localStorage.setItem('loggedInUserTypeOfUser', matchedUser.type);
+            alert(matchedUser.type);
         } else{
             alert('Invalid')
         }
@@ -18,8 +22,12 @@ function Func(userRut,UserPass){
     });
 }
 
-function Logout(){
+function Logout() {
     localStorage.removeItem('loggedInUserRut');
     localStorage.removeItem('loggedInUserPassword');
-}
+    localStorage.removeItem('loggedInUserName');
+    localStorage.removeItem('loggedInUserLastName');
+    localStorage.removeItem('loggedInUserTypeOfUser');
+  }
+
 
