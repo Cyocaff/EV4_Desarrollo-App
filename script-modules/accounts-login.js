@@ -15,11 +15,11 @@ function LoginUser(userRut,UserPass){
             if (matchedUser.type === 'admin'){
                 alert('User is an xd2')
             }
-            if (matchedUser.type === 'xd'){
-                alert('User is a client')
-            }
-            if (matchedUser.type === 'xd3'){
+            if (matchedUser.type === 'instructor'){
                 alert('User is a instructor')
+            }
+            if (matchedUser.type === 'client'){
+                alert('User is a client')
             }
 
         } else{
