@@ -1,0 +1,8 @@
+Se usa para guardar archivos HTML de forma temporal,
+primero se desarrollan como pagina y se testean las funciones
+para luego enviarse como texto a una variable dentro de el JS principal
+para usar la pagina creada como un 'modulo' 
+
+intente usar export e import pero por temas de JS no funciono,
+todos los modulos estan dentro de un JS, se recomienda usar la flecha al lado de las 
+funciones para ocultarlas cuando no se usen o editen.

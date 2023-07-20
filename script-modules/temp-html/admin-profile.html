@@ -94,7 +94,7 @@
 
 
     </head>
-    <body onload="checkLoggedIn()">
+    <body onload="checkLoggedIn(),readProfile();">
         <center>
             <div id = 'logo'>
                 <img src="/img/logo.png" alt="">
@@ -128,40 +128,49 @@
             
         </center>
         <center>
-            <div id = 'maindiv'>
+            <div id = 'adminProfile'>
 
-                <table id = 'mainTableAdmin'>
-                <tr>
-                    <center><td>
-                        <center><h1>Bienvenido a la pantalla principal</h1> </center>
-                        <center><h3>Usted ha iniciado sesión como administrador.</h3> <center>
-                            <hr>
-                    </td></center>
-                </tr>
+                <table id = 'profileAdmin'>
                 <tr>
                     <td>
-                        <center><h2>
-                            Informacion destacada
-                        </h2></center>
+                        <h2> Datos personales:</h2>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <div id = 'mainInfo'>
-                        <table>
-                            <center><img src="/img/app-login-preview.png" alt="404" width="320" height="530"></center>
-                            <center>
-                                <h3>Gimnasio XYZ ahora tiene una aplicación</h3>
-                                <h3>para dispositivos móvil!</h3>
-                            </center>
-                        </table>
-                    </div>
-                    </td>
+                    <table>
+                        <tr>
+                            <td id = 'adminData0'>
+                                Rut:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id = 'adminData1'>
+                                Contraseña:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id = 'adminData2'>
+                                Nombre:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id = 'adminData3'>
+                                Apellido:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id = 'adminData4'>
+                                Tipo:
+                            </td>
+                        </tr>
+                    </table>
                 </tr>
                 </table>
             </div>
         </center>
         
-        <script src="../accounts-login.js"></script>
+        
+            
+       
     </body>
     </html>

@@ -1,3 +1,0 @@
-Used for storing HTML files that are later going to be used 
-as part of the javascript modules to load the pages for the 
-different screen/views of the logged in users.
