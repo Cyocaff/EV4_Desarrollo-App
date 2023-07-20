@@ -1,5 +1,5 @@
 function LoginUser(userRut,UserPass){
-    fetch('../json-db/users.json')
+    fetch('/script-modules/json-db/users.json')
     .then(response => response.json()) 
     .then (data => {
         const users = data.users;
@@ -13,7 +13,7 @@ function LoginUser(userRut,UserPass){
             localStorage.setItem('loggedInUserLastName', matchedUser.lastname);
             localStorage.setItem('loggedInUserTypeOfUser', matchedUser.type);
             if (matchedUser.type === 'admin'){
-                alert('User is an xd2')
+                alert('User is an xd3')
             }
             if (matchedUser.type === 'instructor'){
                 alert('User is a instructor')
@@ -37,6 +37,30 @@ function Logout() {
     localStorage.removeItem('loggedInUserName');
     localStorage.removeItem('loggedInUserLastName');
     localStorage.removeItem('loggedInUserTypeOfUser');
+    location.reload(); 
   }
 
 
+function checkLoggedIn() {
+  const loggedInUserRut = localStorage.getItem('loggedInUserRut');
+  const loggedInUserPassword = localStorage.getItem('loggedInUserPassword');
+
+  fetch('/script-modules/json-db/users.json')
+    .then(response => response.json()) // Parse the JSON data
+    
+    .then(data => {
+        
+      const users = data.users;
+      
+      const matchedUser = users.find(user => user.rut === loggedInUserRut && user.password === loggedInUserPassword);
+
+      if (matchedUser) {
+        alert('User is logged in');
+      } else {
+        alert('User is not logged in'); 
+      }
+    })
+    .catch(error => {
+      console.error('Error', error);
+    });
+}

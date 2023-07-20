@@ -1,140 +1,140 @@
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gimnasio XYZ/ Login</title>
-    <style>
-        html{
-            font-family: Arial, Helvetica, sans-serif;                
-            background-image: url("/img/background2.png");
-        }
-        
-        #logintable{
-            margin-top: 17px;
-            padding-top: 15px;
-            background-color: rgba(16, 16, 16, 0.685);
-            border: double black 5px;
-            border-radius: 5px;
-            padding-left: 13px;
-            padding-right: 13px;
-            padding-bottom: 100px;
-            font-size: 130%;
-        }#logintable h1{
-            color: rgb(255, 255, 255);
-        }#logintable h2{
-            color: rgb(255, 255, 255);
-            margin-bottom: -3px;
-        }#logintable h5{
-            color: rgb(255, 255, 255);
-            font-size: 110%;
-            margin-bottom: -13px;
-        }#logintable button{
-            font-size: 130%;
-            margin-top: 21px;
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gimnasio XYZ/ Login</title>
+        <style>
+            html{
+                font-family: Arial, Helvetica, sans-serif;                
+                background-image: url("/img/background2.png");
+            }
+            
+            #logintable{
+                margin-top: 17px;
+                padding-top: 15px;
+                background-color: rgba(16, 16, 16, 0.685);
+                border: double black 5px;
+                border-radius: 5px;
+                padding-left: 13px;
+                padding-right: 13px;
+                padding-bottom: 100px;
+                font-size: 130%;
+            }#logintable h1{
+                color: rgb(255, 255, 255);
+            }#logintable h2{
+                color: rgb(255, 255, 255);
+                margin-bottom: -3px;
+            }#logintable h5{
+                color: rgb(255, 255, 255);
+                font-size: 110%;
+                margin-bottom: -13px;
+            }#logintable button{
+                font-size: 130%;
+                margin-top: 21px;
+                background-color: #000;
+                color: rgb(0, 255, 140);
+                height: 35px;
+                width: 115px;
+                border: solid rgb(0, 255, 119) 1.4px;
+                border-radius: 15px;
+            }
+            
+
+            #inputhead2{
+                margin-top: 20px;
+            }
+
+            input{
+                background-color: #000000bd;
+                color: rgb(0, 255, 140);
+                border-color:rgb(0, 255, 140);
+                border-radius: 7px;
+                height: 35px;
+                width: 290px;
+                font-size: 140%;
+            }
+            #logo{
+                background-color: white;
+                border-radius: 4px;
+            }
+            #logo hr {
+            border: none;
+            height: 1px;
             background-color: #000;
-            color: rgb(0, 255, 140);
-            height: 35px;
-            width: 115px;
-            border: solid rgb(0, 255, 119) 1.4px;
-            border-radius: 15px;
-        }
-        
-
-        #inputhead2{
-            margin-top: 20px;
-        }
-
-        input{
-            background-color: #000000bd;
-            color: rgb(0, 255, 140);
-            border-color:rgb(0, 255, 140);
-            border-radius: 7px;
-            height: 35px;
-            width: 290px;
-            font-size: 140%;
-        }
-        #logo{
-            background-color: white;
-            border-radius: 4px;
-        }
-        #logo hr {
-        border: none;
-        height: 1px;
-        background-color: #000;
-        box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
-        }
-    </style>
+            box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+            }
+        </style>
 
 
-</head>
-<body>
-    <center>
-        <div id = 'logo'>
-            <img src="img/logo.png" alt="">
-            <hr>
-        </div>
-        
-        
-    </center>
-    <center>
-        <div id = 'maindiv'>
-            <table id = 'logintable'  >
-                <tr>
-                    <td id = 'theader'>
-                        <h1>Inicio de sesión</h1>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>
-                                    <h2 id = 'inputhead1'>
-                                        Rut:
-                                    </h2>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id = 'inputrut'>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 id = 'inputhead2'>
-                                        Contraseña:
-                                    </h2>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text" id = 'inputcon'>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button onclick="LoginUser(inputrut.value,inputcon.value)">
-                                        Ingresar
-                                    </button>
-                                    <h5>
-                                        Olvidó su contraseña?
-                                        Si olvidó su contraseña puede 
-                                    </h5>
-                                    <h5>
-                                        escribir un mail para recuperarla.
-                                        <strong> gimnasioxyz@gymnxyz.cl </strong> 
-                                    </h5>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </center>
-    <script src="/script-modules/accounts-login.js"></script>
-    <script src="/script-modules/instructor-views.js"></script>
-    <script src="/script-modules/client-views.js"></script>
-    <script src="/script-modules/admin-views.js"></script>
-</body>
-</html>
+    </head>
+    <body>
+        <center>
+            <div id = 'logo'>
+                <img src="img/logo.png" alt="">
+                <hr>
+            </div>
+            
+            
+        </center>
+        <center>
+            <div id = 'maindiv'>
+                <table id = 'logintable'  >
+                    <tr>
+                        <td id = 'theader'>
+                            <h1>Inicio de sesión</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h2 id = 'inputhead1'>
+                                            Rut:
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" id = 'inputrut'>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h2 id = 'inputhead2'>
+                                            Contraseña:
+                                        </h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" id = 'inputcon'>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button onclick="LoginUser(inputrut.value,inputcon.value)">
+                                            Ingresar
+                                        </button>
+                                        <h5>
+                                            Olvidó su contraseña?
+                                            Si olvidó su contraseña puede 
+                                        </h5>
+                                        <h5>
+                                            escribir un mail para recuperarla.
+                                            <strong> gimnasioxyz@gymnxyz.cl </strong> 
+                                        </h5>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </center>
+        <script src="/script-modules/accounts-login.js"></script>
+        <script src="/script-modules/instructor-views.js"></script>
+        <script src="/script-modules/client-views.js"></script>
+        <script src="/script-modules/admin-views.js"></script>
+    </body>
+    </html>

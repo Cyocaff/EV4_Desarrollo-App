@@ -1,0 +1,123 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gimnasio XYZ/ Login</title>
+        <style>
+            html{
+                font-family: Arial, Helvetica, sans-serif;                
+                background-image: url("/img/background2.png");
+            }
+            
+            #logintable{
+                margin-top: 17px;
+                padding-top: 15px;
+                background-color: rgba(16, 16, 16, 0.685);
+                border: double black 5px;
+                border-radius: 5px;
+                padding-left: 13px;
+                padding-right: 13px;
+                padding-bottom: 100px;
+                font-size: 130%;
+            }#logintable h1{
+                color: rgb(255, 255, 255);
+            }#logintable h2{
+                color: rgb(255, 255, 255);
+                margin-bottom: -3px;
+            }#logintable h5{
+                color: rgb(255, 255, 255);
+                font-size: 110%;
+                margin-bottom: -13px;
+            }#logintable button{
+                font-size: 130%;
+                margin-top: 21px;
+                background-color: #000;
+                color: rgb(0, 255, 140);
+                height: 35px;
+                width: 115px;
+                border: solid rgb(0, 255, 119) 1.4px;
+                border-radius: 15px;
+            }
+            
+
+            #inputhead2{
+                margin-top: 20px;
+            }
+
+            input{
+                background-color: #000000bd;
+                color: rgb(0, 255, 140);
+                border-color:rgb(0, 255, 140);
+                border-radius: 7px;
+                height: 35px;
+                width: 290px;
+                font-size: 140%;
+            }
+            #logo{
+                background-color: white;
+                border-radius: 4px;
+            }
+            #logo hr {
+            border: none;
+            height: 1px;
+            background-color: #000;
+            box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+            }
+
+            #nav{
+                width: 100%;
+            }#nav h5{
+                margin-top: 20px;
+            }
+            #nav-button-1,#nav-button-2,#nav-button-3{
+                border: solid black 1px;
+                border-radius: 5px;
+                background-color: rgb(0, 255, 140);;
+                width: auto;
+                height: 20%;
+            }
+            
+
+
+        </style>
+
+
+    </head>
+    <body onload="checkLoggedIn()">
+        <center>
+            <div id = 'logo'>
+                <img src="/img/logo.png" alt="">
+
+                <table id = 'nav'>
+                    <tr>
+                        <td id = 'nav-button-1' onclick="alert('clicked')">
+                            <center><h5>Panel de administracion (BD)</h5></center>
+                        </td>
+                        <td id = 'nav-button-2' onclick="alert('clicked')">
+                            <center><h5>Horario y administracion de horas</h5></center>
+                        </td>
+                        <td id = 'nav-button-3' onclick="alert('clicked')">
+                            <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+                        </td>
+                    </tr>
+                </table>
+                <button onclick = 'Logout()'>
+                    Cerrar sesion
+                </button>
+                <hr>
+            </div>
+            
+            
+        </center>
+        <center>
+            <div id = 'maindiv'>
+
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </center>
+        <script src="../accounts-login.js"></script>
+    </body>
+    </html>
