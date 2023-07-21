@@ -102,7 +102,7 @@ function adminMain(){
               <td id = 'nav-button-1' onclick="bdView()">
                   <center><h5>Panel de administracion (BD)</h5></center>
               </td>
-              <td id = 'nav-button-2' onclick="goTo('calendar')">
+              <td id = 'nav-button-2' onclick="calendarAdmin()">
                   <center><h5>Horario y administracion de horas</h5></center>
               </td>
               <td id = 'nav-button-3' onclick="adminProfile()">
@@ -287,10 +287,10 @@ function adminProfile(){
             <td id = 'nav-button-1' onclick="bdView()">
                 <center><h5>Panel de administracion (BD)</h5></center>
             </td>
-            <td id = 'nav-button-2' onclick="goTo('calendar')">
+            <td id = 'nav-button-2' onclick="calendarAdmin()">
                 <center><h5>Horario y administracion de horas</h5></center>
             </td>
-            <td id = 'nav-button-3' onclick="goTo('profile')">
+            <td id = 'nav-button-3' onclick="adminProfile()">
                 <center><h5>Adminstrar perfil y datos de usuario</h5></center>
             </td>
         </tr>
@@ -655,18 +655,18 @@ function bdView(){
             <img src="/img/logo.png" alt="">
 
             <table id = 'nav'>
-                <tr>
-                    <td id = 'nav-button-1' onclick="goTo('usersBD')">
-                        <center><h5>Panel de administracion (BD)</h5></center>
-                    </td>
-                    <td id = 'nav-button-2' onclick="goTo('calendar')">
-                        <center><h5>Horario y administracion de horas</h5></center>
-                    </td>
-                    <td id = 'nav-button-3' onclick="adminProfile()">
-                        <center><h5>Adminstrar perfil y datos de usuario</h5></center>
-                    </td>
-                </tr>
-            </table>
+            <tr>
+                <td id = 'nav-button-1' onclick="bdView()">
+                    <center><h5>Panel de administracion (BD)</h5></center>
+                </td>
+                <td id = 'nav-button-2' onclick="calendarAdmin()">
+                    <center><h5>Horario y administracion de horas</h5></center>
+                </td>
+                <td id = 'nav-button-3' onclick="adminProfile()">
+                    <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+                </td>
+            </tr>
+        </table>
             <table>
                 <tr>
                     <td id = 'logoutButton' onclick = "Logout()">
@@ -731,25 +731,971 @@ function bdView(){
     </center>
     `; 
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    displayUsers();
 
 
 
     
 }
+
+
+
+function calendarAdmin(){
+    
+        var Change = document.getElementById("maindiv");
+        Change.innerHTML = "";
+        Change.innerHTML += `
+        <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;                
+            background-image: url("/img/background2.png");
+        }
+
+        #calendarTable{
+            margin-top: 17px;
+            padding-top: 15px;
+            background-color: rgb(255, 255, 255);
+            border: double rgb(0, 0, 0) 5px;
+            border-radius: 5px;
+            padding-left: 13px;
+            padding-right: 13px;
+            padding-bottom: 100px;
+            font-size: 130%;
+        }#calendarTable h1{
+            color: rgb(0, 0, 0);
+        }#calendarTable h2{
+            color: rgb(0, 0, 0);
+            margin-bottom: -3px;
+        }#calendarTable hr{
+            color: rgb(0, 0, 0);
+            padding-bottom: 2px;
+            height: 4px;
+            background-color: black;
+            margin-top: 5px;
+        }#calendarTable h5{
+            color: rgb(0, 0, 0);
+            font-size: 110%;
+            margin-bottom: -13px;
+        }#calendarTable button{
+            font-size: 130%;
+            margin-top: 21px;
+            background-color: #000;
+            color: rgb(0, 255, 140);
+            height: 35px;
+            width: auto;
+            border: solid rgb(0, 255, 119) 1.4px;
+            border-radius: 15px;
+        }
+        #logo{
+            background-color: white;
+            border-radius: 4px;
+        }
+        #logo hr {
+        border: none;
+        height: 1px;
+        background-color: #000;
+        box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+        }
+
+        #nav{
+            width: auto;
+        }#nav h5{
+            margin-top: 20px;
+        }
+        #nav-button-1,#nav-button-2,#nav-button-3{
+            border: solid black 1px;
+            border-radius: 5px;
+            background-color: rgb(0, 255, 140);;
+            width: auto;
+            height: 20%;
+        }
+        #logoutButton{
+            margin-top: 70px;
+            background-color: red;
+            border-color: #000;
+            border: solid 2px;
+        }#logoutButton h5{
+            margin-top: 17px;
+        }
+        
+        #mainInfo{
+            background-color: #000000;
+            border: solid 1px;
+            border-color: rgb(0, 255, 132);
+            border-radius: 5px;
+            color:rgb(0, 255, 132);;
+            width: auto;
+        }
+        img{
+            margin-top: 25px;
+        }
+        
+
+
+    </style>
+
+
+    <center>
+        <div id = 'logo' onload="checkLoggedIn()">
+            <img src="/img/logo.png" alt="">
+
+            <table id = 'nav'>
+                <tr>
+                    <td id = 'nav-button-1' onclick="bdView()">
+                        <center><h5>Panel de administracion (BD)</h5></center>
+                    </td>
+                    <td id = 'nav-button-2' onclick="calendarAdmin()">
+                        <center><h5>Horario y administracion de horas</h5></center>
+                    </td>
+                    <td id = 'nav-button-3' onclick="adminProfile()">
+                        <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td id = 'logoutButton' onclick = 'Logout()'>
+                        <h5> Cerrar sesion </h5>
+                    </td>
+                </tr>
+            </table>
+            
+            
+            </button>
+            <hr>
+        </div>
+        
+        
+    </center>
+    <center>
+        <div id="calendarDiv">
+            <table id="calendarTable">
+                <tr>
+                    <td><button id="day1">1</button></td>
+                    <td><button id="day2">2</button></td>
+                    <td><button id="day3">3</button></td>
+                    <td><button id="day4">4</button></td>
+                    <td><button id="day5">5</button></td>
+                    <td><button id="day6">6</button></td>
+                    <td><button id="day7">7</button></td>
+                </tr>
+                <tr>
+                    <td><button id="day8">8</button></td>
+                    <td><button id="day9">9</button></td>
+                    <td><button id="day10">10</button></td>
+                    <td><button id="day11">11</button></td>
+                    <td><button id="day12">12</button></td>
+                    <td><button id="day13">13</button></td>
+                    <td><button id="day14">14</button></td>
+                </tr>
+                <tr>
+                    <td><button id="day15">15</button></td>
+                    <td><button id="day16">16</button></td>
+                    <td><button id="day17">17</button></td>
+                    <td><button id="day18">18</button></td>
+                    <td><button id="day19">19</button></td>
+                    <td><button id="day20">20</button></td>
+                    <td><button id="day21">21</button></td>
+                </tr>
+                <tr>
+                    <td><button id="day22">22</button></td>
+                    <td><button id="day23">23</button></td>
+                    <td><button id="day24">24</button></td>
+                    <td><button id="day25">25</button></td>
+                    <td><button id="day26">26</button></td>
+                    <td><button id="day27">27</button></td>
+                    <td><button id="day28">28</button></td>
+                </tr>
+                <tr>
+                    <td><button id="day29">29</button></td>
+                    <td><button id="day30">30</button></td>
+                    <td><button id="day31">31</button></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </center>
+    `; 
+    loadButtonColors();
+    loadButtonID();
+};
+
+
+function mainClient(){
+    
+    var Change = document.getElementById("maindiv");
+    Change.innerHTML = "";
+    Change.innerHTML += `
+    <style>
+    html{
+        font-family: Arial, Helvetica, sans-serif;                
+        background-image: url("/img/background2.png");
+    }
+  
+    #mainTableAdmin{
+        margin-top: 17px;
+        padding-top: 15px;
+        background-color: rgb(255, 255, 255);
+        border: double rgb(0, 0, 0) 5px;
+        border-radius: 5px;
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 100px;
+        font-size: 130%;
+    }#mainTableAdmin h1{
+        color: rgb(0, 0, 0);
+    }#mainTableAdmin h2{
+        color: rgb(0, 0, 0);
+        margin-bottom: -3px;
+    }#mainTableAdmin hr{
+        color: rgb(0, 0, 0);
+        padding-bottom: 2px;
+        height: 4px;
+        background-color: black;
+        margin-top: 5px;
+    }#mainTableAdmin h5{
+        color: rgb(0, 0, 0);
+        font-size: 110%;
+        margin-bottom: -13px;
+    }#mainTableAdmin button{
+        font-size: 130%;
+        margin-top: 21px;
+        background-color: #000;
+        color: rgb(0, 255, 140);
+        height: 35px;
+        width: auto;
+        border: solid rgb(0, 255, 119) 1.4px;
+        border-radius: 15px;
+    }
+    #logo{
+        background-color: white;
+        border-radius: 4px;
+    }
+    #logo hr {
+    border: none;
+    height: 1px;
+    background-color: #000;
+    box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+    }
+  
+    #nav{
+        width: auto;
+    }#nav h5{
+        margin-top: 20px;
+    }
+    #nav-button-1{
+        border: solid black 1px;
+        border-radius: 5px;
+        background-color: rgb(255, 0, 0);;
+        width: auto;
+        height: 20%;
+    }
+    #nav-button-2,#nav-button-3{
+        border: solid black 1px;
+        border-radius: 5px;
+        background-color: rgb(0, 255, 106);;
+        width: auto;
+        height: 20%;
+    }
+    #logoutButton{
+        margin-top: 70px;
+        background-color: red;
+        border-color: #000;
+        border: solid 2px;
+    }#logoutButton h5{
+        margin-top: 17px;
+    }
+    
+    #mainInfo{
+        background-color: #000000;
+        border: solid 1px;
+        border-color: rgb(0, 255, 132);
+        border-radius: 5px;
+        color:rgb(0, 255, 132);;
+        width: auto;
+    }
+    img{
+        margin-top: 25px;
+    }
+    
+  
+  
+  </style>
+
+
+
+    <body onload="checkLoggedIn()">
+        <center>
+            <div id = 'logo'>
+                <img src="/img/logo.png" alt="">
+
+                <table id = 'nav'>
+                    <tr>
+                        <td id = 'nav-button-1' onclick="Logout()">
+                            <center><h5>Cerrar sesion</h5></center>
+                        </td>
+                        <td id = 'nav-button-2' onclick="calendarClient()">
+                            <center><h5>Horario y agendamiento de horas</h5></center>
+                        </td>
+                        <td id = 'nav-button-3' onclick="clientProfile()">
+                            <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+                        </td>
+                    </tr>
+                </table>
+                
+                
+                </button>
+                <hr>
+            </div>
+            
+            
+        </center>
+        <center>
+            <div id = 'calendarDiv'>
+
+                <table id = 'mainTableAdmin'>
+                <tr>
+                    <center><td>
+                        <center><h1>Bienvenido a la pantalla principal</h1> </center>
+                        <center><h3>Usted ha iniciado sesión como cliente.</h3> <center>
+                            <center><h3>Recordatorio:</h3></center>
+                            <center><h4>El Gimnasio esta disponible todos los dias</h4></center>
+                            <center><h4>entre las 15:30 y 18:15 horas</h4></center>
+                            <hr>
+                    </td></center>
+                </tr>
+                <tr>
+                    <td>
+                        <center><h2>
+                            Informacion destacada
+                        </h2></center>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id = 'mainInfo'>
+                        <table>
+                            <center><img src="/img/app-login-preview.png" alt="404" width="320" height="530"></center>
+                            <center>
+                                <h3>Gimnasio XYZ ahora tiene una aplicación</h3>
+                                <h3>para dispositivos móvil!</h3>
+                            </center>
+                        </table>
+                    </div>
+                    </td>
+                </tr>
+                </table>
+            </div>
+        </center>
+`; 
+};
+
+
+function clientProfile(){   
+    var Change = document.getElementById("maindiv");
+
+    Change.innerHTML = "";
+    Change.innerHTML += `
+    <style>
+    html{
+        font-family: Arial, Helvetica, sans-serif;                
+        background-image: url("/img/background2.png");
+    }
+  
+    #mainTableAdmin{
+        margin-top: 17px;
+        padding-top: 15px;
+        background-color: rgb(255, 255, 255);
+        border: double rgb(0, 0, 0) 5px;
+        border-radius: 5px;
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 100px;
+        font-size: 130%;
+    }#mainTableAdmin h1{
+        color: rgb(0, 0, 0);
+    }#mainTableAdmin h2{
+        color: rgb(0, 0, 0);
+        margin-bottom: -3px;
+    }#mainTableAdmin hr{
+        color: rgb(0, 0, 0);
+        padding-bottom: 2px;
+        height: 4px;
+        background-color: black;
+        margin-top: 5px;
+    }#mainTableAdmin h5{
+        color: rgb(0, 0, 0);
+        font-size: 110%;
+        margin-bottom: -13px;
+    }#mainTableAdmin button{
+        font-size: 130%;
+        margin-top: 21px;
+        background-color: #000;
+        color: rgb(0, 255, 140);
+        height: 35px;
+        width: auto;
+        border: solid rgb(0, 255, 119) 1.4px;
+        border-radius: 15px;
+    }
+    #logo{
+        background-color: white;
+        border-radius: 4px;
+    }
+    #logo hr {
+    border: none;
+    height: 1px;
+    background-color: #000;
+    box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+    }
+  
+    #nav{
+        width: auto;
+    }#nav h5{
+        margin-top: 20px;
+    }
+    #nav-button-1{
+        border: solid black 1px;
+        border-radius: 5px;
+        background-color: rgb(255, 0, 0);;
+        width: auto;
+        height: 20%;
+        }
+    #nav-button-2,#nav-button-3{
+        border: solid black 1px;
+        border-radius: 5px;
+        background-color: rgb(0, 255, 106);;
+        width: auto;
+        height: 20%;
+        }
+    #logoutButton{
+        margin-top: 70px;
+        background-color: red;
+        border-color: #000;
+        border: solid 2px;
+    }#logoutButton h5{
+        margin-top: 17px;
+    }
+    
+    #mainInfo{
+        background-color: #000000;
+        border: solid 1px;
+        border-color: rgb(0, 255, 132);
+        border-radius: 5px;
+        color:rgb(0, 255, 132);;
+        width: auto;
+    }
+    img{
+        margin-top: 25px;
+    }
+    #adminProfile{
+        background-color: white;
+        border: solid black 2px;
+        width: auto;
+        padding-bottom: 50px;
+    }#adminProfile h2{
+        margin-top: 20px;
+    }
+    #profileAdmin td{
+        height: 80px;
+        width: 120px;
+        border: solid black 1px;
+    }
+    #editData{
+        background-color: blue;
+        color: white;
+        border: solid black 1px;
+        border-radius: 15px;
+        height: 80px;
+        width: 240px;
+        margin-top: 30px;
+    }
+    
+  
+  
+  </style>
+  
+  <center>
+  <div id = 'logo'>
+      <img src="/img/logo.png" alt="">
+  
+      <table id = 'nav'>
+      <tr>
+          <td id = 'nav-button-1' onclick="Logout()">
+              <center><h5>Cerrar sesion</h5></center>
+          </td>
+          <td id = 'nav-button-2' onclick="calendarClient()">
+              <center><h5>Horario y agendamiento de horas</h5></center>
+          </td>
+          <td id = 'nav-button-3' onclick="clientProfile()">
+              <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+          </td>
+      </tr>
+  </table> 
+      
+      
+      </button>
+      <hr>
+  </div>
+  
+  
+  </center>
+  <center>
+  <div id = 'adminProfile'>
+  
+      <table id = 'profileAdmin'>
+      <tr>
+          <td>
+              <h2> Datos personales:</h2>
+          </td>
+      </tr>
+      <tr>
+          <table id = 'profileAdmin'>
+              <tr>
+                  <td>
+                     <h3>Rut: </h3>
+                  </td>
+                  <td>
+                      <h3 id = 'userRut'></h3>
+                  </td>
+              </tr>
+  
+  
+              <tr>
+                  <td>
+                      <h3>Contraseña: </h3>
+                  </td>
+                  <td>
+                      <h3 id = 'userPass'></h3>
+                  </td>
+              </tr>
+  
+              
+              <tr>
+                  <td>
+                      <h3>Nombre: </h3>
+                  </td>
+                  <td>
+                      <h3 id = 'userName'></h3>
+                  </td>
+              </tr>
+  
+  
+              <tr>
+                  <td>
+                      <h3>Apellido: </h3>
+                  </td>
+                  <td>
+                      <h3 id = 'userLastName'></h3>
+                  </td>
+              </tr>
+  
+  
+              <tr>
+                  <td>
+                      <h3>Tipo: </h3>
+                  </td>
+                  <td>
+                      <h3 id = 'userType'></h3>
+                  </td>
+              </tr>
+          </table>
+      </tr>
+      <tr>
+          <td>
+              <div id = 'editData' onclick="editData()">
+                  <h2>Editar Informacion</h2>
+              </div>     
+          </td>
+      </tr>
+      </table>
+  </div>
+  <div id = 'editSpace'>
+  
+  </div>
+  </center>
+  `; 
+  Write();
+  } 
+
+function calendarClient(){
+    var Change = document.getElementById("maindiv");
+    Change.innerHTML = "";
+    Change.innerHTML += `
+    <style>
+    html{
+        font-family: Arial, Helvetica, sans-serif;                
+        background-image: url("/img/background2.png");
+    }
+
+    #calendarTable{
+        margin-top: 17px;
+        padding-top: 15px;
+        background-color: rgb(255, 255, 255);
+        border: double rgb(0, 0, 0) 5px;
+        border-radius: 5px;
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 100px;
+        font-size: 130%;
+    }#calendarTable h1{
+        color: rgb(0, 0, 0);
+    }#calendarTable h2{
+        color: rgb(0, 0, 0);
+        margin-bottom: -3px;
+    }#calendarTable hr{
+        color: rgb(0, 0, 0);
+        padding-bottom: 2px;
+        height: 4px;
+        background-color: black;
+        margin-top: 5px;
+    }#calendarTable h5{
+        color: rgb(0, 0, 0);
+        font-size: 110%;
+        margin-bottom: -13px;
+    }#calendarTable button{
+        font-size: 130%;
+        margin-top: 21px;
+        background-color: #000;
+        color: rgb(0, 255, 140);
+        height: 35px;
+        width: auto;
+        border: solid rgb(0, 255, 119) 1.4px;
+        border-radius: 15px;
+    }
+    #logo{
+        background-color: white;
+        border-radius: 4px;
+    }
+    #logo hr {
+    border: none;
+    height: 1px;
+    background-color: #000;
+    box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+    }
+
+    #nav{
+        width: auto;
+    }#nav h5{
+        margin-top: 20px;
+    }
+    #nav-button-1{
+        border: solid black 1px;
+        border-radius: 5px;
+        background-color: rgb(255, 0, 0);;
+        width: auto;
+        height: 20%;
+        }
+    #nav-button-2,#nav-button-3{
+        border: solid black 1px;
+        border-radius: 5px;
+        background-color: rgb(0, 255, 106);;
+        width: auto;
+        height: 20%;
+        }
+    #logoutButton{
+        margin-top: 70px;
+        background-color: red;
+        border-color: #000;
+        border: solid 2px;
+    }#logoutButton h5{
+        margin-top: 17px;
+    }
+    
+    #mainInfo{
+        background-color: #000000;
+        border: solid 1px;
+        border-color: rgb(0, 255, 132);
+        border-radius: 5px;
+        color:rgb(0, 255, 132);;
+        width: auto;
+    }
+    img{
+        margin-top: 25px;
+    }
+    
+
+
+</style>
+
+
+<center>
+    <div id = 'logo' onload="checkLoggedIn()">
+        <img src="/img/logo.png" alt="">
+
+        <table id = 'nav'>
+        <tr>
+            <td id = 'nav-button-1' onclick="Logout()">
+                <center><h5>Cerrar sesion</h5></center>
+            </td>
+            <td id = 'nav-button-2' onclick="calendarClient()">
+                <center><h5>Horario y agendamiento de horas</h5></center>
+            </td>
+            <td id = 'nav-button-3' onclick="clientProfile()">
+                <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+            </td>
+        </tr>
+    </table>
+        
+        
+        </button>
+        <hr>
+    </div>
+    
+    
+</center>
+<center>
+    <div id="calendarDiv">
+        <table id="calendarTable">
+            <tr>
+                <td><button id="day1">1</button></td>
+                <td><button id="day2">2</button></td>
+                <td><button id="day3">3</button></td>
+                <td><button id="day4">4</button></td>
+                <td><button id="day5">5</button></td>
+                <td><button id="day6">6</button></td>
+                <td><button id="day7">7</button></td>
+            </tr>
+            <tr>
+                <td><button id="day8">8</button></td>
+                <td><button id="day9">9</button></td>
+                <td><button id="day10">10</button></td>
+                <td><button id="day11">11</button></td>
+                <td><button id="day12">12</button></td>
+                <td><button id="day13">13</button></td>
+                <td><button id="day14">14</button></td>
+            </tr>
+            <tr>
+                <td><button id="day15">15</button></td>
+                <td><button id="day16">16</button></td>
+                <td><button id="day17">17</button></td>
+                <td><button id="day18">18</button></td>
+                <td><button id="day19">19</button></td>
+                <td><button id="day20">20</button></td>
+                <td><button id="day21">21</button></td>
+            </tr>
+            <tr>
+                <td><button id="day22">22</button></td>
+                <td><button id="day23">23</button></td>
+                <td><button id="day24">24</button></td>
+                <td><button id="day25">25</button></td>
+                <td><button id="day26">26</button></td>
+                <td><button id="day27">27</button></td>
+                <td><button id="day28">28</button></td>
+            </tr>
+            <tr>
+                <td><button id="day29">29</button></td>
+                <td><button id="day30">30</button></td>
+                <td><button id="day31">31</button></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</center>
+`; 
+loadButtonColors();
+loadButtonID();
+};
+
+
+function instructorMain(){
+    var Change = document.getElementById("maindiv");
+    Change.innerHTML = "";
+    Change.innerHTML += `
+    <style>
+    html{
+        font-family: Arial, Helvetica, sans-serif;                
+        background-image: url("/img/background2.png");
+    }
+
+    #mainTableAdmin{
+        margin-top: 17px;
+        padding-top: 15px;
+        background-color: rgb(255, 255, 255);
+        border: double rgb(0, 0, 0) 5px;
+        border-radius: 5px;
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 100px;
+        font-size: 130%;
+    }#mainTableAdmin h1{
+        color: rgb(0, 0, 0);
+    }#mainTableAdmin h2{
+        color: rgb(0, 0, 0);
+        margin-bottom: -3px;
+    }#mainTableAdmin hr{
+        color: rgb(0, 0, 0);
+        padding-bottom: 2px;
+        height: 4px;
+        background-color: black;
+        margin-top: 5px;
+    }#mainTableAdmin h5{
+        color: rgb(0, 0, 0);
+        font-size: 110%;
+        margin-bottom: -13px;
+    }#mainTableAdmin button{
+        font-size: 130%;
+        margin-top: 21px;
+        background-color: #000;
+        color: rgb(0, 255, 140);
+        height: 35px;
+        width: auto;
+        border: solid rgb(0, 255, 119) 1.4px;
+        border-radius: 15px;
+    }
+    #logo{
+        background-color: white;
+        border-radius: 4px;
+    }
+    #logo hr {
+    border: none;
+    height: 1px;
+    background-color: #000;
+    box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+    }
+
+    #nav{
+        width: auto;
+    }#nav h5{
+        margin-top: 20px;
+    }
+    #nav-button-1{
+        border: solid black 1px;
+        border-radius: 5px;
+        background-color: rgb(255, 0, 0);;
+        width: auto;
+        height: 20%;
+    }
+    #nav-button-2,#nav-button-3{
+        border: solid black 1px;
+        border-radius: 5px;
+        background-color: rgb(0, 255, 106);;
+        width: auto;
+        height: 20%;
+    }
+    #logoutButton{
+        margin-top: 70px;
+        background-color: red;
+        border-color: #000;
+        border: solid 2px;
+    }#logoutButton h5{
+        margin-top: 17px;
+    }
+    
+    #mainInfo{
+        background-color: #000000;
+        border: solid 1px;
+        border-color: rgb(0, 255, 132);
+        border-radius: 5px;
+        color:rgb(0, 255, 132);;
+        width: auto;
+    }
+    img{
+        margin-top: 25px;
+    }
+    
+
+
+</style>
+
+
+
+<body onload="checkLoggedIn()">
+<center>
+    <div id = 'logo'>
+        <img src="/img/logo.png" alt="">
+
+        <table id = 'nav'>
+        <tr>
+            <td id = 'nav-button-1' onclick="Logout()">
+                <center><h5>Cerrar sesion</h5></center>
+            </td>
+            <td id = 'nav-button-2' onclick="calendarClient()">
+                <center><h5>Horario y agendamiento de horas</h5></center>
+            </td>
+            <td id = 'nav-button-3' onclick="clientProfile()">
+                <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+            </td>
+        </tr>
+    </table>
+        
+        
+        </button>
+        <hr>
+    </div>
+    
+    
+</center>
+<center>
+    <div id = 'calendarDiv'>
+
+        <table id = 'mainTableAdmin'>
+        <tr>
+            <center><td>
+                <center><h1>Bienvenido a la pantalla principal</h1> </center>
+                <center><h3>Usted ha iniciado sesión como Instructor.</h3> <center>
+                    <center><h3>Recordatorio:</h3></center>
+                    <center><h4>El Gimnasio esta disponible todos los dias</h4></center>
+                    <center><h4>entre las 15:30 y 18:15 horas</h4></center>
+                    <hr>
+            </td></center>
+        </tr>
+        <tr>
+            <td>
+                <center><h2>
+                    Informacion destacada
+                </h2></center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id = 'mainInfo'>
+                <table>
+                    <center><img src="/img/app-login-preview.png" alt="404" width="320" height="530"></center>
+                    <center>
+                        <h3>Gimnasio XYZ ahora tiene una aplicación</h3>
+                        <h3>para dispositivos móvil!</h3>
+                    </center>
+                </table>
+            </div>
+            </td>
+        </tr>
+        </table>
+    </div>
+</center>
+`; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Busca un usuario en la BD con ese nombre y password
@@ -765,7 +1711,6 @@ function LoginUser(userRut, UserPass) {
         const matchedUser = users.find(user => user.rut === userRut && user.password === UserPass);
   
         if (matchedUser) {
-          alert('Logged');
           localStorage.setItem('loggedInUserRut', userRut);
           localStorage.setItem('loggedInUserPassword', UserPass);
           localStorage.setItem('loggedInUserName', matchedUser.name);
@@ -774,9 +1719,9 @@ function LoginUser(userRut, UserPass) {
           if (matchedUser.type === 'admin') {
             adminMain();
           } else if (matchedUser.type === 'instructor') {
-            alert('User is an instructor');
+            instructorMain();
           } else if (matchedUser.type === 'client') {
-            alert('User is a client');
+            mainClient();
           }
           return;
         }
@@ -785,16 +1730,24 @@ function LoginUser(userRut, UserPass) {
         const matchedLocalUser = newUsers.find(user => user.rut === userRut && user.password === UserPass);
   
         if (matchedLocalUser) {
-          alert('Logged as local user');
           isLocalUser = true; 
           localStorage.setItem('loggedInUserRut', userRut);
           localStorage.setItem('loggedInUserPassword', UserPass);
           localStorage.setItem('loggedInUserName', matchedLocalUser.name);
           localStorage.setItem('loggedInUserLastName', matchedLocalUser.lastname);
           localStorage.setItem('loggedInUserTypeOfUser', matchedLocalUser.type);
+
+          if (matchedLocalUser.type === 'admin') {
+            adminMain();
+          } else if (matchedLocalUser.type === 'instructor') {
+            instructorMain();
+          } else if (matchedLocalUser.type === 'client') {
+            mainClient();
+          }
+
           return;
         }
-        alert('Invalid');
+        alert('Ingreso de datos invalido');
       })
       .catch(error => {
         console.error('Error', error);
@@ -836,10 +1789,10 @@ function checkLoggedIn() {
           adminMain()
         }
         if(loggedInUserTypeOfUser === 'instructor'){
-          //
+          instructorMain();
         }
         if(loggedInUserTypeOfUser === 'client'){
-          //
+            mainClient();
         }
 
       } else {
@@ -878,6 +1831,7 @@ function Write(){
     const tdTypeOfUser = document.getElementById("userType");
     tdTypeOfUser.innerHTML += loggedInUserTypeOfUser;
 }
+
 function editData(){
     var Change = document.getElementById("editSpace");
     Change.innerHTML = "";
@@ -905,7 +1859,40 @@ function editData(){
 	</table></center>
 `; 
 };
+
+
+//SE USA CON TAL DE MODIFICAR INFORMACION DE LOS USUARIOS
+
 function editInfo(X, Y, Z) {
+
+    const isLocalUser = localStorage.getItem('isLocalUser') === 'true';
+
+    if (isLocalUser) {
+
+
+
+        const newUsers = JSON.parse(localStorage.getItem('newUsers')) || [];
+        const thisLocalUser = newUsers.find(user => user.rut === userRut && user.password === UserPass);
+
+        localStorage.setItem(thisLocalUser.password,Z );
+        localStorage.setItem('loggedInUserName', thisLocalUser.name,X);
+        localStorage.setItem('loggedInUserLastName', thisLocalUser.lastname,Y);
+
+        const tdUserPass = document.getElementById("userPass");
+        tdUserPass.innerHTML = loggedInUserPassword;
+    
+        const tdUserName = document.getElementById("userName");
+        tdUserName.innerHTML = loggedInUserName;
+    
+        const tdUserLastName = document.getElementById("userLastName");
+        tdUserLastName.innerHTML = loggedInUserLastName;
+        alert('Datos guardados!');
+        adminProfile();
+
+    }else{
+
+    }
+
 
     localStorage.setItem('loggedInUserPassword', Z);
     localStorage.setItem('loggedInUserName', X);
@@ -929,6 +1916,8 @@ function editInfo(X, Y, Z) {
 }
 
 
+
+//SE USA CON TAL DE MOSTRAR LOS USUARIOS EN LA BD
 
 function displayUsers() {
     fetch('/script-modules/json-db/users.json')
@@ -1032,3 +2021,56 @@ function displayUsers() {
   
     tableBody.appendChild(tr);
   }  
+
+
+//SE UTILIZAN CONDICIONALES PARA MANEJAR EL CALENDARIO CON COLORES,
+// LOS INSTRUCTORES PUEDEN MARCAR DE AZUL, INDICANDO QUE UN DIA ESTA DISPONIBLE PARA CLASES
+// LOS CLIENTES PUEDEN MARCAR LOS DIAS AZULES DE MORADO, INDICANDO QUE HABRA ASISTENCIA,
+// PARA CLIENTES E INSTRUCTORES, SUS RUT SE GUARDAN EN LOCAL STORAGE PARA LUEGO INDICAR QUIENES
+// VAN A ASISTIR, MIENTRAS QUE LOS ADMINISTRADORES PUEDEN BLOQUEAR Y ELIMINAR SESIONES USANDO EL COLOR
+// ROJO, EN ESTE CASO NO SE GUARDA EN LOCALSTORAGE INFORMACION ALGUNA.
+
+  function toggleButtonColor(day) {
+    const userType = localStorage.getItem('loggedInUserTypeOfUser');
+
+    if (userType === 'client') {
+        const button = document.getElementById(`day${day}`);
+        if (button.style.backgroundColor === 'blue') {
+            button.style.backgroundColor = 'purple';
+            localStorage.setItem(`day${day}`, 'purple');
+        }
+    } else if (userType === 'instructor') {
+        const button = document.getElementById(`day${day}`);
+        if (button.style.backgroundColor === 'blue') {
+            button.style.backgroundColor = 'black';
+            localStorage.setItem(`day${day}`, 'black');
+        } if ((button.style.backgroundColor === 'black')){
+            button.style.backgroundColor = 'blue';
+            localStorage.setItem(`day${day}`, 'blue');
+        }
+    } else {
+        const button = document.getElementById(`day${day}`);
+        if (button.style.backgroundColor === 'red') {
+            button.style.backgroundColor = 'black';
+            localStorage.setItem(`day${day}`, 'black');
+        } else{
+            button.style.backgroundColor = 'red';
+            localStorage.setItem(`day${day}`, 'red');
+        }
+    }
+}
+
+function loadButtonColors() {
+    for (let day = 1; day <= 31; day++) {
+        const color = localStorage.getItem(`day${day}`);
+        if (color) {
+            document.getElementById(`day${day}`).style.backgroundColor = color;
+        }
+    }
+}
+
+function loadButtonID(){
+    for (let day = 1; day <= 31; day++) {
+        document.getElementById(`day${day}`).addEventListener('click', () => toggleButtonColor(day));
+    }
+}

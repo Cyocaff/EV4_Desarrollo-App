@@ -9,7 +9,7 @@
                 background-image: url("/img/background2.png");
             }
 
-            #mainTableAdmin{
+            #calendarTable{
                 margin-top: 17px;
                 padding-top: 15px;
                 background-color: rgb(255, 255, 255);
@@ -19,22 +19,22 @@
                 padding-right: 13px;
                 padding-bottom: 100px;
                 font-size: 130%;
-            }#mainTableAdmin h1{
+            }#calendarTable h1{
                 color: rgb(0, 0, 0);
-            }#mainTableAdmin h2{
+            }#calendarTable h2{
                 color: rgb(0, 0, 0);
                 margin-bottom: -3px;
-            }#mainTableAdmin hr{
+            }#calendarTable hr{
                 color: rgb(0, 0, 0);
                 padding-bottom: 2px;
                 height: 4px;
                 background-color: black;
                 margin-top: 5px;
-            }#mainTableAdmin h5{
+            }#calendarTable h5{
                 color: rgb(0, 0, 0);
                 font-size: 110%;
                 margin-bottom: -13px;
-            }#mainTableAdmin button{
+            }#calendarTable button{
                 font-size: 130%;
                 margin-top: 21px;
                 background-color: #000;
@@ -93,10 +93,8 @@
         </style>
 
 
-    </head>
-    <body onload="checkLoggedIn()"  onload = "alert('loaded')">
         <center>
-            <div id = 'logo'>
+            <div id = 'logo' onload="checkLoggedIn()"  onload = "alert('loaded')">
                 <img src="/img/logo.png" alt="">
 
                 <table id = 'nav'>
@@ -128,40 +126,61 @@
             
         </center>
         <center>
-            <div id = 'calendarDiv'>
-
-                <table id = 'mainTableAdmin'>
-                <tr>
-                    <center><td>
-                        <center><h1>Bienvenido a la pantalla principal</h1> </center>
-                        <center><h3>Usted ha iniciado sesión como administrador.</h3> <center>
-                            <hr>
-                    </td></center>
-                </tr>
-                <tr>
-                    <td>
-                        <center><h2>
-                            Informacion destacada
-                        </h2></center>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id = 'mainInfo'>
-                        <table>
-                            <center><img src="/img/app-login-preview.png" alt="404" width="320" height="530"></center>
-                            <center>
-                                <h3>Gimnasio XYZ ahora tiene una aplicación</h3>
-                                <h3>para dispositivos móvil!</h3>
-                            </center>
-                        </table>
-                    </div>
-                    </td>
-                </tr>
+            <div id="calendarDiv">
+                <table id="calendarTable">
+                    <tr>
+                        <td><button id="day1">1</button></td>
+                        <td><button id="day2">2</button></td>
+                        <td><button id="day3">3</button></td>
+                        <td><button id="day4">4</button></td>
+                        <td><button id="day5">5</button></td>
+                        <td><button id="day6">6</button></td>
+                        <td><button id="day7">7</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="day8">8</button></td>
+                        <td><button id="day9">9</button></td>
+                        <td><button id="day10">10</button></td>
+                        <td><button id="day11">11</button></td>
+                        <td><button id="day12">12</button></td>
+                        <td><button id="day13">13</button></td>
+                        <td><button id="day14">14</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="day15">15</button></td>
+                        <td><button id="day16">16</button></td>
+                        <td><button id="day17">17</button></td>
+                        <td><button id="day18">18</button></td>
+                        <td><button id="day19">19</button></td>
+                        <td><button id="day20">20</button></td>
+                        <td><button id="day21">21</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="day22">22</button></td>
+                        <td><button id="day23">23</button></td>
+                        <td><button id="day24">24</button></td>
+                        <td><button id="day25">25</button></td>
+                        <td><button id="day26">26</button></td>
+                        <td><button id="day27">27</button></td>
+                        <td><button id="day28">28</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="day29">29</button></td>
+                        <td><button id="day30">30</button></td>
+                        <td><button id="day31">31</button></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </table>
             </div>
         </center>
-        
+        loadButtonColors();
         <script src="../accounts-login.js"></script>
+        <script>
+            // Call function to load stored button colors from localStorage
+            
+        </script>
     </body>
     </html>

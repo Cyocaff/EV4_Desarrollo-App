@@ -1,0 +1,25 @@
+    ___________________________________
+   /-----------------------------------\
+  /=====================================\
+ /-------| Manual de instalacion |-------\
+/=========================================\
+| Version 1.0.0 de la aplicacion, para su |
+| uso es necesario ejecutar un servidor   |
+| para hostear el archivo, la opcion      |
+| recomendada es usar Python para hostear |
+| se debe usar Powershell en el directorio|
+| que contenga el archivo index.html para |
+| el comando que se debe usar es:         |
+|                                         |
+| python -m http.server                   |
+|                                         |
+| luego de eso hay que acceder usando la  |
+| direccion de IP local + ':8000/'        |
+| por ejemplo:                            |
+| http://111.111.111.5:8000/index.html    |
+| al hacer esto la aplicacion deberia de  |
+| poder ejecutarse sin problemas.         |
+|=========================================|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+

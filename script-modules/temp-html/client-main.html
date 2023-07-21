@@ -60,10 +60,17 @@
             }#nav h5{
                 margin-top: 20px;
             }
-            #nav-button-1,#nav-button-2,#nav-button-3{
+            #nav-button-1{
                 border: solid black 1px;
                 border-radius: 5px;
-                background-color: rgb(0, 255, 140);;
+                background-color: rgb(255, 0, 0);;
+                width: auto;
+                height: 20%;
+            }
+            #nav-button-2,#nav-button-3{
+                border: solid black 1px;
+                border-radius: 5px;
+                background-color: rgb(0, 255, 106);;
                 width: auto;
                 height: 20%;
             }
@@ -101,21 +108,14 @@
 
                 <table id = 'nav'>
                     <tr>
-                        <td id = 'nav-button-1' onclick="bdView()">
-                            <center><h5>Panel de administracion (BD)</h5></center>
+                        <td id = 'nav-button-1' onclick="Logout()">
+                            <center><h5>Cerrar sesion</h5></center>
                         </td>
                         <td id = 'nav-button-2' onclick="calendarAdmin()">
-                            <center><h5>Horario y administracion de horas</h5></center>
+                            <center><h5>Horario y agendamiento de horas</h5></center>
                         </td>
                         <td id = 'nav-button-3' onclick="adminProfile()">
                             <center><h5>Adminstrar perfil y datos de usuario</h5></center>
-                        </td>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <td id = 'logoutButton' onclick = 'Logout()'>
-                            <h5> Cerrar sesion </h5>
                         </td>
                     </tr>
                 </table>
@@ -134,7 +134,10 @@
                 <tr>
                     <center><td>
                         <center><h1>Bienvenido a la pantalla principal</h1> </center>
-                        <center><h3>Usted ha iniciado sesión como administrador.</h3> <center>
+                        <center><h3>Usted ha iniciado sesión como cliente.</h3> <center>
+                            <center><h3>Recordatorio:</h3></center>
+                            <center><h4>El Gimnasio esta disponible todos los dias</h4></center>
+                            <center><h4>entre las 15:30 y 18:15 horas</h4></center>
                             <hr>
                     </td></center>
                 </tr>
