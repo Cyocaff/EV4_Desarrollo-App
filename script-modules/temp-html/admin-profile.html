@@ -87,6 +87,28 @@
             img{
                 margin-top: 25px;
             }
+            #adminProfile{
+                background-color: white;
+                border: solid black 2px;
+                width: auto;
+                padding-bottom: 50px;
+            }#adminProfile h2{
+                margin-top: 20px;
+            }
+            #profileAdmin td{
+                height: 80px;
+                width: 120px;
+                border: solid black 1px;
+            }
+            #editData{
+                background-color: blue;
+                color: white;
+                border: solid black 1px;
+                border-radius: 15px;
+                height: 80px;
+                width: 240px;
+                margin-top: 30px;
+            }
             
 
 
@@ -137,35 +159,68 @@
                     </td>
                 </tr>
                 <tr>
-                    <table>
+                    <table id = 'profileAdmin'>
                         <tr>
-                            <td id = 'adminData0'>
-                                Rut:
+                            <td>
+                               <h3>Rut: </h3>
+                            </td>
+                            <td>
+                                <h3 id = 'userRut'></h3>
                             </td>
                         </tr>
+
+
                         <tr>
-                            <td id = 'adminData1'>
-                                Contraseña:
+                            <td>
+                                <h3>Contraseña: </h3>
+                            </td>
+                            <td>
+                                <h3 id = 'userPass'></h3>
                             </td>
                         </tr>
+
+                        
                         <tr>
-                            <td id = 'adminData2'>
-                                Nombre:
+                            <td>
+                                <h3>Nombre: </h3>
+                            </td>
+                            <td>
+                                <h3 id = 'userName'></h3>
                             </td>
                         </tr>
+
+
                         <tr>
-                            <td id = 'adminData3'>
-                                Apellido:
+                            <td>
+                                <h3>Apellido: </h3>
+                            </td>
+                            <td>
+                                <h3 id = 'userLastName'></h3>
                             </td>
                         </tr>
+
+
                         <tr>
-                            <td id = 'adminData4'>
-                                Tipo:
+                            <td>
+                                <h3>Tipo: </h3>
+                            </td>
+                            <td>
+                                <h3 id = 'userType'></h3>
                             </td>
                         </tr>
                     </table>
                 </tr>
+                <tr>
+                    <td>
+                        <div id = 'editData' onclick="editData()">
+                            <h2>Editar Informacion</h2>
+                        </div>     
+                    </td>
+                </tr>
                 </table>
+            </div>
+            <div id = 'editSpace'>
+
             </div>
         </center>
         

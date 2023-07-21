@@ -92,14 +92,14 @@ function adminMain(){
 
 </style>
 
-<body>
+
 <center>
   <div id = 'logo' onload="checkLoggedIn()">
       <img src="/img/logo.png" alt="">
 
       <table id = 'nav'>
           <tr>
-              <td id = 'nav-button-1' onclick="goTo('usersBD')">
+              <td id = 'nav-button-1' onclick="bdView()">
                   <center><h5>Panel de administracion (BD)</h5></center>
               </td>
               <td id = 'nav-button-2' onclick="goTo('calendar')">
@@ -168,167 +168,224 @@ function adminProfile(){
   Change.innerHTML = "";
   Change.innerHTML += `
   <style>
-            html{
-                font-family: Arial, Helvetica, sans-serif;                
-                background-image: url("/img/background2.png");
-            }
+  html{
+      font-family: Arial, Helvetica, sans-serif;                
+      background-image: url("/img/background2.png");
+  }
 
-            #mainTableAdmin{
-                margin-top: 17px;
-                padding-top: 15px;
-                background-color: rgb(255, 255, 255);
-                border: double rgb(0, 0, 0) 5px;
-                border-radius: 5px;
-                padding-left: 13px;
-                padding-right: 13px;
-                padding-bottom: 100px;
-                font-size: 130%;
-            }#mainTableAdmin h1{
-                color: rgb(0, 0, 0);
-            }#mainTableAdmin h2{
-                color: rgb(0, 0, 0);
-                margin-bottom: -3px;
-            }#mainTableAdmin hr{
-                color: rgb(0, 0, 0);
-                padding-bottom: 2px;
-                height: 4px;
-                background-color: black;
-                margin-top: 5px;
-            }#mainTableAdmin h5{
-                color: rgb(0, 0, 0);
-                font-size: 110%;
-                margin-bottom: -13px;
-            }#mainTableAdmin button{
-                font-size: 130%;
-                margin-top: 21px;
-                background-color: #000;
-                color: rgb(0, 255, 140);
-                height: 35px;
-                width: auto;
-                border: solid rgb(0, 255, 119) 1.4px;
-                border-radius: 15px;
-            }
-            #logo{
-                background-color: white;
-                border-radius: 4px;
-            }
-            #logo hr {
-            border: none;
-            height: 1px;
-            background-color: #000;
-            box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
-            }
+  #mainTableAdmin{
+      margin-top: 17px;
+      padding-top: 15px;
+      background-color: rgb(255, 255, 255);
+      border: double rgb(0, 0, 0) 5px;
+      border-radius: 5px;
+      padding-left: 13px;
+      padding-right: 13px;
+      padding-bottom: 100px;
+      font-size: 130%;
+  }#mainTableAdmin h1{
+      color: rgb(0, 0, 0);
+  }#mainTableAdmin h2{
+      color: rgb(0, 0, 0);
+      margin-bottom: -3px;
+  }#mainTableAdmin hr{
+      color: rgb(0, 0, 0);
+      padding-bottom: 2px;
+      height: 4px;
+      background-color: black;
+      margin-top: 5px;
+  }#mainTableAdmin h5{
+      color: rgb(0, 0, 0);
+      font-size: 110%;
+      margin-bottom: -13px;
+  }#mainTableAdmin button{
+      font-size: 130%;
+      margin-top: 21px;
+      background-color: #000;
+      color: rgb(0, 255, 140);
+      height: 35px;
+      width: auto;
+      border: solid rgb(0, 255, 119) 1.4px;
+      border-radius: 15px;
+  }
+  #logo{
+      background-color: white;
+      border-radius: 4px;
+  }
+  #logo hr {
+  border: none;
+  height: 1px;
+  background-color: #000;
+  box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+  }
 
-            #nav{
-                width: auto;
-            }#nav h5{
-                margin-top: 20px;
-            }
-            #nav-button-1,#nav-button-2,#nav-button-3{
-                border: solid black 1px;
-                border-radius: 5px;
-                background-color: rgb(0, 255, 140);;
-                width: auto;
-                height: 20%;
-            }
-            #logoutButton{
-                margin-top: 70px;
-                background-color: red;
-                border-color: #000;
-                border: solid 2px;
-            }#logoutButton h5{
-                margin-top: 17px;
-            }
-            
-            #mainInfo{
-                background-color: #000000;
-                border: solid 1px;
-                border-color: rgb(0, 255, 132);
-                border-radius: 5px;
-                color:rgb(0, 255, 132);;
-                width: auto;
-            }
-            img{
-                margin-top: 25px;
-            }
-            
-
-
-        </style>
-  <center>
-  <div id = 'logo'>
-      <img src="/img/logo.png" alt="">
-
-      <table id = 'nav'>
-          <tr>
-              <td id = 'nav-button-1' onclick="goTo('usersBD')">
-                  <center><h5>Panel de administracion (BD)</h5></center>
-              </td>
-              <td id = 'nav-button-2' onclick="goTo('calendar')">
-                  <center><h5>Horario y administracion de horas</h5></center>
-              </td>
-              <td id = 'nav-button-3' onclick="goTo('profile')">
-                  <center><h5>Adminstrar perfil y datos de usuario</h5></center>
-              </td>
-          </tr>
-      </table>
-      <table>
-          <tr>
-              <td id = 'logoutButton' onclick = "Logout()">
-                  <h5> Cerrar sesion </h5>
-              </td>
-          </tr>
-      </table>
-      
-      
-      </button>
-      <hr>
-  </div>
+  #nav{
+      width: auto;
+  }#nav h5{
+      margin-top: 20px;
+  }
+  #nav-button-1,#nav-button-2,#nav-button-3{
+      border: solid black 1px;
+      border-radius: 5px;
+      background-color: rgb(0, 255, 140);;
+      width: auto;
+      height: 20%;
+  }
+  #logoutButton{
+      margin-top: 70px;
+      background-color: red;
+      border-color: #000;
+      border: solid 2px;
+  }#logoutButton h5{
+      margin-top: 17px;
+  }
   
+  #mainInfo{
+      background-color: #000000;
+      border: solid 1px;
+      border-color: rgb(0, 255, 132);
+      border-radius: 5px;
+      color:rgb(0, 255, 132);;
+      width: auto;
+  }
+  img{
+      margin-top: 25px;
+  }
+  #adminProfile{
+      background-color: white;
+      border: solid black 2px;
+      width: auto;
+      padding-bottom: 50px;
+  }#adminProfile h2{
+      margin-top: 20px;
+  }
+  #profileAdmin td{
+      height: 80px;
+      width: 120px;
+      border: solid black 1px;
+  }
+  #editData{
+      background-color: blue;
+      color: white;
+      border: solid black 1px;
+      border-radius: 15px;
+      height: 80px;
+      width: 240px;
+      margin-top: 30px;
+  }
   
+
+
+</style>
+
+<center>
+<div id = 'logo'>
+    <img src="/img/logo.png" alt="">
+
+    <table id = 'nav'>
+        <tr>
+            <td id = 'nav-button-1' onclick="bdView()">
+                <center><h5>Panel de administracion (BD)</h5></center>
+            </td>
+            <td id = 'nav-button-2' onclick="goTo('calendar')">
+                <center><h5>Horario y administracion de horas</h5></center>
+            </td>
+            <td id = 'nav-button-3' onclick="goTo('profile')">
+                <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td id = 'logoutButton' onclick = 'Logout()'>
+                <h5> Cerrar sesion </h5>
+            </td>
+        </tr>
+    </table>
+    
+    
+    </button>
+    <hr>
+</div>
+
+
 </center>
 <center>
-  <div id = 'adminProfile'>
+<div id = 'adminProfile'>
 
-      <table id = 'profileAdmin'>
-      <tr>
-          <td>
-              <h2> Datos personales:</h2>
-          </td>
-      </tr>
-      <tr>
-          <table>
-              <tr>
-                  <td id = 'adminData0'>
-                      Rut:
-                  </td>
-              </tr>
-              <tr>
-                  <td id = 'adminData1'>
-                      Contraseña:
-                  </td>
-              </tr>
-              <tr>
-                  <td id = 'adminData2'>
-                      Nombre:
-                  </td>
-              </tr>
-              <tr>
-                  <td id = 'adminData3'>
-                      Apellido:
-                  </td>
-              </tr>
-              <tr>
-                  <td id = 'adminData4'>
-                      Tipo:
-                  </td>
-              </tr>
-          </table>
-      </tr>
-      </table>
-  </div>
+    <table id = 'profileAdmin'>
+    <tr>
+        <td>
+            <h2> Datos personales:</h2>
+        </td>
+    </tr>
+    <tr>
+        <table id = 'profileAdmin'>
+            <tr>
+                <td>
+                   <h3>Rut: </h3>
+                </td>
+                <td>
+                    <h3 id = 'userRut'></h3>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <h3>Contraseña: </h3>
+                </td>
+                <td>
+                    <h3 id = 'userPass'></h3>
+                </td>
+            </tr>
+
+            
+            <tr>
+                <td>
+                    <h3>Nombre: </h3>
+                </td>
+                <td>
+                    <h3 id = 'userName'></h3>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <h3>Apellido: </h3>
+                </td>
+                <td>
+                    <h3 id = 'userLastName'></h3>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <h3>Tipo: </h3>
+                </td>
+                <td>
+                    <h3 id = 'userType'></h3>
+                </td>
+            </tr>
+        </table>
+    </tr>
+    <tr>
+        <td>
+            <div id = 'editData' onclick="editData()">
+                <h2>Editar Informacion</h2>
+            </div>     
+        </td>
+    </tr>
+    </table>
+</div>
+<div id = 'editSpace'>
+
+</div>
 </center>
 `; 
+Write();
 } 
 
 
@@ -460,55 +517,304 @@ function returnToLogin(){
 `; 
 }
 
+function bdView(){
 
+
+    {
+        var Change = document.getElementById("maindiv");
+        Change.innerHTML = "";
+        Change.innerHTML += `
+        <style>
+        html{
+            font-family: Arial, Helvetica, sans-serif;                
+            background-image: url("/img/background2.png");
+        }
+
+        #mainTableAdmin{
+            margin-top: 17px;
+            padding-top: 15px;
+            background-color: rgb(255, 255, 255);
+            border: double rgb(0, 0, 0) 5px;
+            border-radius: 5px;
+            padding-left: 13px;
+            padding-right: 13px;
+            padding-bottom: 100px;
+            font-size: 130%;
+        }#mainTableAdmin h1{
+            color: rgb(0, 0, 0);
+        }#mainTableAdmin h2{
+            color: rgb(0, 0, 0);
+            margin-bottom: -3px;
+        }#mainTableAdmin hr{
+            color: rgb(0, 0, 0);
+            padding-bottom: 2px;
+            height: 4px;
+            background-color: black;
+            margin-top: 5px;
+        }#mainTableAdmin h5{
+            color: rgb(0, 0, 0);
+            font-size: 110%;
+            margin-bottom: -13px;
+        }#mainTableAdmin button{
+            font-size: 130%;
+            margin-top: 21px;
+            background-color: #000;
+            color: rgb(0, 255, 140);
+            height: 35px;
+            width: auto;
+            border: solid rgb(0, 255, 119) 1.4px;
+            border-radius: 15px;
+        }
+        #logo{
+            background-color: white;
+            border-radius: 4px;
+        }
+        #logo hr {
+        border: none;
+        height: 1px;
+        background-color: #000;
+        box-shadow: 0 2px 6px rgba(0, 255, 119, 0.5);
+        }
+
+        #nav{
+            width: auto;
+        }#nav h5{
+            margin-top: 20px;
+        }
+        #nav-button-1,#nav-button-2,#nav-button-3{
+            border: solid black 1px;
+            border-radius: 5px;
+            background-color: rgb(0, 255, 140);;
+            width: auto;
+            height: 20%;
+        }
+        #logoutButton{
+            margin-top: 70px;
+            background-color: red;
+            border-color: #000;
+            border: solid 2px;
+        }#logoutButton h5{
+            margin-top: 17px;
+        }
+        
+        #mainInfo{
+            background-color: #000000;
+            border: solid 1px;
+            border-color: rgb(0, 255, 132);
+            border-radius: 5px;
+            color:rgb(0, 255, 132);;
+            width: auto;
+        }
+        img{
+            margin-top: 25px;
+        }
+        #BD-View-Table{
+            background-color: white;
+            border: solid black 1px;
+            font-size: 50%;
+            
+        }
+        #BD-View-Table th{
+            border: solid black 1px;
+            
+
+        }
+        .user-table {
+            width: 100%;
+            table-layout: fixed; 
+        }
+
+
+        .user-table th {
+            padding: 10px; 
+            text-align: left;
+        }
+
+
+        .user-table td {
+            padding: 5px;
+            text-align: left; 
+        }
+
+        #userTableBody td{
+            border: solid black 1px;
+        }
+        #addNewUserForm{
+            background-color: white;
+            border: solid black 2.5px;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+
+    </style>
+
+
+    <center>
+    <div id = 'logo' onload="checkLoggedIn()">
+            <img src="/img/logo.png" alt="">
+
+            <table id = 'nav'>
+                <tr>
+                    <td id = 'nav-button-1' onclick="goTo('usersBD')">
+                        <center><h5>Panel de administracion (BD)</h5></center>
+                    </td>
+                    <td id = 'nav-button-2' onclick="goTo('calendar')">
+                        <center><h5>Horario y administracion de horas</h5></center>
+                    </td>
+                    <td id = 'nav-button-3' onclick="adminProfile()">
+                        <center><h5>Adminstrar perfil y datos de usuario</h5></center>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td id = 'logoutButton' onclick = "Logout()">
+                        <h5> Cerrar sesion </h5>
+                    </td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        
+        
+    </center>
+    <center>
+        <div id = 'BD-View-Div'>
+                <table id = 'BD-View-Table'>
+                    <thead>
+                      <tr>
+                        <th>Rut</th>
+                        <th>Contraseña</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo</th>
+                        <th>Mail</th>
+                      </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                      <!-- Table body will be filled with user information -->
+                    </tbody>
+                  </table>
+
+
+                <table id = 'addNewUserForm'>
+                <tr>
+                    <td>
+                            <h2>Añadir nuevo usuario</h2>
+                        <form id="newUserForm">
+                            <label for="newRut">Rut:</label>
+                            <input type="text" id="newRut" required><br>
+                          
+                            <label for="newPassword">Contraseña:</label>
+                            <input type="password" id="newPassword" required><br>
+                          
+                            <label for="newName">Name:</label>
+                            <input type="text" id="newName" required><br>
+                          
+                            <label for="newLastname">Lastname:</label>
+                            <input type="text" id="newLastname" required><br>
+
+                            <label for="newType">Tipo:</label>
+                            <input type="text" id="newType" required><br>
+                          
+                            <label for="newMail">Mail:</label>
+                            <input type="email" id="newMail" required><br>
+                          
+                            <button type="button" onclick="addNewUser(newRut.value,newPassword.value,newType.value,newName.value,newLastname.value,newMail.value), form.reset();">Añadir Usuario</button>
+                          </form>
+                          
+                    </td>
+                </tr>    
+                </table>
+        </div>
+    </center>
+    `; 
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+}
 
 
 //Busca un usuario en la BD con ese nombre y password
 
 
-function LoginUser(userRut,UserPass){
+function LoginUser(userRut, UserPass) {
+    let isLocalUser = false;
   
     fetch('/script-modules/json-db/users.json')
-    .then(response => response.json()) 
-    .then (data => {
+      .then(response => response.json())
+      .then(data => {
         const users = data.users;
-        const matchedUser = users.find(user => user.rut ===userRut && user.password === UserPass );
-
-        if (matchedUser){
-            alert('Logged')
-            localStorage.setItem('loggedInUserRut', userRut);
-            localStorage.setItem('loggedInUserPassword', UserPass);
-            localStorage.setItem('loggedInUserName', matchedUser.name);
-            localStorage.setItem('loggedInUserLastName', matchedUser.lastname);
-            localStorage.setItem('loggedInUserTypeOfUser', matchedUser.type);
-            if (matchedUser.type === 'admin'){
-              adminMain();
-            }
-            if (matchedUser.type === 'instructor'){
-                alert('User is a instructor')
-            }
-            if (matchedUser.type === 'client'){
-                alert('User is a client')
-            }
-
-        } else{
-            alert('Invalid')
+        const matchedUser = users.find(user => user.rut === userRut && user.password === UserPass);
+  
+        if (matchedUser) {
+          alert('Logged');
+          localStorage.setItem('loggedInUserRut', userRut);
+          localStorage.setItem('loggedInUserPassword', UserPass);
+          localStorage.setItem('loggedInUserName', matchedUser.name);
+          localStorage.setItem('loggedInUserLastName', matchedUser.lastname);
+          localStorage.setItem('loggedInUserTypeOfUser', matchedUser.type);
+          if (matchedUser.type === 'admin') {
+            adminMain();
+          } else if (matchedUser.type === 'instructor') {
+            alert('User is an instructor');
+          } else if (matchedUser.type === 'client') {
+            alert('User is a client');
+          }
+          return;
         }
-    })
-    .catch(error => {
+  
+        const newUsers = JSON.parse(localStorage.getItem('newUsers')) || [];
+        const matchedLocalUser = newUsers.find(user => user.rut === userRut && user.password === UserPass);
+  
+        if (matchedLocalUser) {
+          alert('Logged as local user');
+          isLocalUser = true; 
+          localStorage.setItem('loggedInUserRut', userRut);
+          localStorage.setItem('loggedInUserPassword', UserPass);
+          localStorage.setItem('loggedInUserName', matchedLocalUser.name);
+          localStorage.setItem('loggedInUserLastName', matchedLocalUser.lastname);
+          localStorage.setItem('loggedInUserTypeOfUser', matchedLocalUser.type);
+          return;
+        }
+        alert('Invalid');
+      })
+      .catch(error => {
         console.error('Error', error);
-    });
-}
-
-function Logout() {
-    localStorage.removeItem('loggedInUserRut');
-    localStorage.removeItem('loggedInUserPassword');
-    localStorage.removeItem('loggedInUserName');
-    localStorage.removeItem('loggedInUserLastName');
-    localStorage.removeItem('loggedInUserTypeOfUser');
-    returnToLogin();
+      });
   }
+  
+  function Logout() {
+    const isLocalUser = localStorage.getItem('isLocalUser') === 'true';
 
+    if (isLocalUser) {
+      returnToLogin();
+    } else {
+        localStorage.removeItem('loggedInUserRut');
+        localStorage.removeItem('loggedInUserPassword');
+        localStorage.removeItem('loggedInUserName');
+        localStorage.removeItem('loggedInUserLastName');
+        localStorage.removeItem('loggedInUserTypeOfUser');
+        returnToLogin();
+    }
+  }
 
 //Verifica si el usuario esta logeado , si no lo esta lo devuelve a la pantalla de login.
 
@@ -517,7 +823,7 @@ function checkLoggedIn() {
   const loggedInUserPassword = localStorage.getItem('loggedInUserPassword');
   const loggedInUserTypeOfUser = localStorage.getItem ('loggedInUserTypeOfUser');
   fetch('/script-modules/json-db/users.json')
-    .then(response => response.json()) // Parse the JSON data
+    .then(response => response.json()) 
     
     .then(data => {
         
@@ -542,7 +848,7 @@ function checkLoggedIn() {
     })
     .catch(error => {
       console.error('Error', error);
-    });
+    }); 
 }
 
 
@@ -550,23 +856,179 @@ function checkLoggedIn() {
 
 
 // Apartado de BD y Carga de datos / Edicion de datos de perfil de usuario logeado.
-function Write(X,Y){
-  var currentLine = Y.value;
-  console.log("adminData"+currentLine)
-  box = document.getElementById("adminData0")
-  par = document.createElement('p')
-  resultado = document.createTextNode(X)
-  par.appendChild(resultado);
-  box.appendChild(par)       
+function Write(){
+
+    const loggedInUserRut = localStorage.getItem('loggedInUserRut');
+    const tdUserRut = document.getElementById("userRut");
+    tdUserRut.innerHTML += loggedInUserRut;
+
+    const loggedInUserPassword = localStorage.getItem('loggedInUserPassword');
+    const tdUserPass = document.getElementById("userPass");
+    tdUserPass.innerHTML += loggedInUserPassword;
+
+    const loggedInUserName = localStorage.getItem ('loggedInUserName');
+    const tdUserName = document.getElementById("userName");
+    tdUserName.innerHTML += loggedInUserName;
+
+    const loggedInUserLastName = localStorage.getItem ('loggedInUserLastName');
+    const tdUserLastName = document.getElementById("userLastName");
+    tdUserLastName.innerHTML += loggedInUserLastName;
+
+    const loggedInUserTypeOfUser = localStorage.getItem ('loggedInUserTypeOfUser');
+    const tdTypeOfUser = document.getElementById("userType");
+    tdTypeOfUser.innerHTML += loggedInUserTypeOfUser;
 }
-function readProfile(){
-  const loggedInUserRut = localStorage.getItem('loggedInUserRut');
-  const loggedInUserPassword = localStorage.getItem('loggedInUserPassword');
-  const loggedInUserName = localStorage.getItem ('loggedInUserName');
-  const loggedInUserLastName = localStorage.getItem ('loggedInUserLastName');
-  const loggedInUserTypeOfUser = localStorage.getItem ('loggedInUserTypeOfUser');
-  userData = [loggedInUserRut,loggedInUserPassword,loggedInUserName,loggedInUserLastName,loggedInUserTypeOfUser];
-  for (i = 0; i < 5; i++){
-    Write(userData[i],i);
-  };
+function editData(){
+    var Change = document.getElementById("editSpace");
+    Change.innerHTML = "";
+    Change.innerHTML += `
+	<style>
+		#newData{
+			background-color: white;
+			border: solid black 1px;
+		}
+	</style>
+	<center><table id = 'newData'>
+		<tr>
+			<td>
+				<h2>Nueva informacion: 4</h2>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			Nombre:<input type="text" name="N1" id="N1">
+			<br>Apellido:<input type="text" name="N2" id="N2">
+			<br>Contraseña:<input type="text" name="N3" id="N3">	
+			<br><center><input type="button" value="Guardar info" onclick="editInfo(N1.value,N2.value,N3.value)"></center>
+			</td>
+		</tr>
+	</table></center>
+`; 
+};
+function editInfo(X, Y, Z) {
+
+    localStorage.setItem('loggedInUserPassword', Z);
+    localStorage.setItem('loggedInUserName', X);
+    localStorage.setItem('loggedInUserLastName', Y);
+
+    const loggedInUserPassword = localStorage.getItem('loggedInUserPassword');
+    const loggedInUserName = localStorage.getItem('loggedInUserName');
+    const loggedInUserLastName = localStorage.getItem('loggedInUserLastName');
+
+    const tdUserPass = document.getElementById("userPass");
+    tdUserPass.innerHTML = loggedInUserPassword;
+
+    const tdUserName = document.getElementById("userName");
+    tdUserName.innerHTML = loggedInUserName;
+
+    const tdUserLastName = document.getElementById("userLastName");
+    tdUserLastName.innerHTML = loggedInUserLastName;
+
+    alert('Datos guardados!');
+    adminProfile();
 }
+
+
+
+function displayUsers() {
+    fetch('/script-modules/json-db/users.json')
+      .then(response => response.json())
+      .then(data => {
+        const users = data.users;
+  
+  
+        const newUsers = JSON.parse(localStorage.getItem('newUsers')) || [];
+  
+  
+        const allUsers = [...users, ...newUsers];
+  
+        const tableBody = document.getElementById("userTableBody");
+  
+        allUsers.forEach(user => {
+          const tr = document.createElement("tr");
+  
+          const tdRut = document.createElement("td");
+          tdRut.textContent = user.rut;
+  
+          const tdPass = document.createElement("td");
+          tdPass.textContent = user.password;
+  
+          const tdName = document.createElement("td");
+          tdName.textContent = user.name;
+  
+          const tdLastname = document.createElement("td");
+          tdLastname.textContent = user.lastname;
+  
+          const tdType = document.createElement("td");
+          tdType.textContent = user.type;
+  
+          const tdMail = document.createElement("td");
+          tdMail.textContent = user.mail;
+  
+          tr.appendChild(tdRut);
+          tr.appendChild(tdPass);
+          tr.appendChild(tdName);
+          tr.appendChild(tdLastname);
+          tr.appendChild(tdType);
+          tr.appendChild(tdMail);
+  
+          tableBody.appendChild(tr);
+        });
+      })
+      .catch(error => {
+        console.error('Error', error);
+      });
+  }
+
+
+
+
+
+  
+
+  function addNewUser(A, B, C, D, E, F) {
+    let newUsers = JSON.parse(localStorage.getItem('newUsers')) || [];
+  
+    const newUser = {
+      rut: A,
+      password: B,
+      type: C,
+      name: D,
+      lastname: E,
+      mail: F
+    };
+  
+    newUsers.push(newUser);
+  
+    localStorage.setItem('newUsers', JSON.stringify(newUsers));
+  
+    const tableBody = document.getElementById("userTableBody");
+    const tr = document.createElement("tr");
+  
+    const tdRut = document.createElement("td");
+    tdRut.textContent = A;
+  
+    const tdPass = document.createElement("td");
+    tdPass.textContent = B;
+  
+    const tdName = document.createElement("td");
+    tdName.textContent = D;
+  
+    const tdLastname = document.createElement("td");
+    tdLastname.textContent = E;
+  
+    const tdType = document.createElement("td");
+    tdType.textContent = C;
+  
+    const tdMail = document.createElement("td");
+    tdMail.textContent = F;
+  
+    tr.appendChild(tdRut);
+    tr.appendChild(tdPass);
+    tr.appendChild(tdName);
+    tr.appendChild(tdLastname);
+    tr.appendChild(tdType);
+    tr.appendChild(tdMail);
+  
+    tableBody.appendChild(tr);
+  }  
