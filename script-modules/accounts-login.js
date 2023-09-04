@@ -1,3 +1,33 @@
+//Sobre las funciones del script.
+//El script contiene funciones principalmente escritas en ingles
+//con nombres lo mas explicativos posibles asi como con variables
+//que tienen nombres que intentan dejar claro lo que hacen,
+// mas informacion en las funciones...
+// 
+//Sobre el funcionamiento general...
+// la aplicacion carga varios strings grandes
+// de html hacia index.html con tal de dar una 
+// experiencia mas fluida, hay un archivo JSON
+// intentando imitar una base de datos (Nunca
+// se paso en clases como conectar una BD)
+// para guardar datos basicos y lo otro es generado,
+// guardado y eliminado con localstorage. 
+//
+//El programa usa el archivo JSON para validar las cuentas 
+// usadas para las pruebas asi como la cuenta del primer
+// administrador, dependiendo de los datos ingresados
+// (password y rut) el usuario o no podra entrar o 
+// entrara a la cuenta que le corresponda segun su tipo.
+//
+// Las claves y rut's para ingresar se pueden encontrar
+// en el archivo JSON y como administrador se pueden
+// crear nuevas cuentas de admin, instructor, client.
+// para su uso.
+
+// Debido a las pocas diferencias algunas pantallas de 'instructor' y 'client' son las mismas.
+// Esto no afecta al funcionamiento ya que las funciones dependen de el tipo se usuario en ciertos casos.
+
+
 function adminMain(){
   var Change = document.getElementById("maindiv");
 
@@ -644,6 +674,7 @@ function bdView(){
             border: solid black 2.5px;
             padding-top: 15px;
             margin-top: 15px;
+            padding-bottom: 50px;
         }
         
 
@@ -709,10 +740,10 @@ function bdView(){
                             <label for="newPassword">Contraseña:</label>
                             <input type="password" id="newPassword" required><br>
                           
-                            <label for="newName">Name:</label>
+                            <label for="newName">Nombre:</label>
                             <input type="text" id="newName" required><br>
                           
-                            <label for="newLastname">Lastname:</label>
+                            <label for="newLastname">Apellido:</label>
                             <input type="text" id="newLastname" required><br>
 
                             <label for="newType">Tipo:</label>
@@ -726,6 +757,16 @@ function bdView(){
                           
                     </td>
                 </tr>    
+                <tr>
+                <td>
+                    <br>
+                    <hr>
+                    <h2>Eliminar usuario por Rut</h2>
+                    <input type="text" id="deleteUserRut" placeholder="Ingrese el rut del usuario a eliminar">
+                    <button onclick="deleteUser()">Eliminar Usuario</button>
+
+                </td>
+                </tr>
                 </table>
         </div>
     </center>
@@ -1674,30 +1715,6 @@ function instructorMain(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Busca un usuario en la BD con ese nombre y password
 
 
@@ -1754,6 +1771,12 @@ function LoginUser(userRut, UserPass) {
       });
   }
   
+
+  //Debido a las limitaciones no se puede usar una DB real, por lo que para solucionar el problema
+  // del 'Logout' se eliminara solo el loggedIn de localstorage de usuarios de JSON,
+  // esto se hizo al principio, tantas cosas han cambiado que probablemente no haya problema en
+  // cambiarlo, pero aun asi, funciona bien como esta.
+
   function Logout() {
     const isLocalUser = localStorage.getItem('isLocalUser') === 'true';
 
@@ -1845,7 +1868,7 @@ function editData(){
 	<center><table id = 'newData'>
 		<tr>
 			<td>
-				<h2>Nueva informacion: 4</h2>
+				<h2>Nueva informacion: </h2>
 			</td>
 		</tr>
 		<tr>
@@ -1863,6 +1886,8 @@ function editData(){
 
 //SE USA CON TAL DE MODIFICAR INFORMACION DE LOS USUARIOS
 
+//Funcion incompleta, por temas de tiempo no se pudo terminar el correcto
+// desarrollo de la funcion, modifica los datos del usuario hasta recargar pantalla.
 function editInfo(X, Y, Z) {
 
     const isLocalUser = localStorage.getItem('isLocalUser') === 'true';
@@ -1887,7 +1912,18 @@ function editInfo(X, Y, Z) {
         const tdUserLastName = document.getElementById("userLastName");
         tdUserLastName.innerHTML = loggedInUserLastName;
         alert('Datos guardados!');
-        adminProfile();
+
+        const userType = localStorage.getItem('loggedInUserTypeOfUser');
+
+        if (userType === 'admin') {
+            adminProfile();
+        }else{
+            clientProfile();
+        }
+
+
+
+        
 
     }else{
 
@@ -1912,12 +1948,19 @@ function editInfo(X, Y, Z) {
     tdUserLastName.innerHTML = loggedInUserLastName;
 
     alert('Datos guardados!');
-    adminProfile();
+    const userType = localStorage.getItem('loggedInUserTypeOfUser');
+    if (userType === 'admin') {
+        adminProfile();
+    }else{
+        clientProfile();
+    }
 }
 
 
 
 //SE USA CON TAL DE MOSTRAR LOS USUARIOS EN LA BD
+
+// Trae usuarios de localstorage + los usuarios originales del archivo .json.
 
 function displayUsers() {
     fetch('/script-modules/json-db/users.json')
@@ -1973,7 +2016,8 @@ function displayUsers() {
 
 
 
-  
+  // Agregar nuevos usuarios a localstorage, en algunas funciones se refiere a estos usuarios como
+  // 'localUser' 
 
   function addNewUser(A, B, C, D, E, F) {
     let newUsers = JSON.parse(localStorage.getItem('newUsers')) || [];
@@ -2030,35 +2074,44 @@ function displayUsers() {
 // VAN A ASISTIR, MIENTRAS QUE LOS ADMINISTRADORES PUEDEN BLOQUEAR Y ELIMINAR SESIONES USANDO EL COLOR
 // ROJO, EN ESTE CASO NO SE GUARDA EN LOCALSTORAGE INFORMACION ALGUNA.
 
-  function toggleButtonColor(day) {
+//Funcion no terminada por falta de tiempo, se puede ver el uso de localStorage, en caso de completarse,
+// deberia guardar los datos del usuario como asistente en la 'DB' de localstorage como asistente a cierta clase y dia.
+
+
+function toggleButtonColor(day) {
     const userType = localStorage.getItem('loggedInUserTypeOfUser');
+    const button = document.getElementById(`day${day}`);
+    const color = localStorage.getItem(`day${day}`);
 
     if (userType === 'client') {
-        const button = document.getElementById(`day${day}`);
-        if (button.style.backgroundColor === 'blue') {
+        if (color === 'blue') {
             button.style.backgroundColor = 'purple';
             localStorage.setItem(`day${day}`, 'purple');
         }
     } else if (userType === 'instructor') {
         const button = document.getElementById(`day${day}`);
-        if (button.style.backgroundColor === 'blue') {
-            button.style.backgroundColor = 'black';
-            localStorage.setItem(`day${day}`, 'black');
-        } if ((button.style.backgroundColor === 'black')){
-            button.style.backgroundColor = 'blue';
-            localStorage.setItem(`day${day}`, 'blue');
+        if (button.style.backgroundColor != 'red'){
+            if (button.style.backgroundColor === 'black') {
+                button.style.backgroundColor = 'blue';
+                localStorage.setItem(`day${day}`, 'blue');
+            } else {
+                button.style.backgroundColor = 'black';
+                localStorage.removeItem(`day${day}`);
+            }
         }
+        
     } else {
-        const button = document.getElementById(`day${day}`);
-        if (button.style.backgroundColor === 'red') {
+        if (color === 'red') {
             button.style.backgroundColor = 'black';
             localStorage.setItem(`day${day}`, 'black');
-        } else{
+        } else {
             button.style.backgroundColor = 'red';
             localStorage.setItem(`day${day}`, 'red');
         }
     }
 }
+
+
 
 function loadButtonColors() {
     for (let day = 1; day <= 31; day++) {
@@ -2073,4 +2126,36 @@ function loadButtonID(){
     for (let day = 1; day <= 31; day++) {
         document.getElementById(`day${day}`).addEventListener('click', () => toggleButtonColor(day));
     }
+}
+
+function deleteUser() {
+    const loggedInUserRut = localStorage.getItem('loggedInUserRut');
+    const userType = localStorage.getItem('loggedInUserTypeOfUser');
+    const deleteUserRutInput = document.getElementById('deleteUserRut');
+
+    if (userType === 'admin') {
+        const userRutToDelete = deleteUserRutInput.value.trim();
+
+
+        if (userRutToDelete === loggedInUserRut) {
+            alert('No puedes eliminar al administrador actual.');
+            return;
+        }
+
+        const newUsers = JSON.parse(localStorage.getItem('newUsers')) || [];
+        const userIndex = newUsers.findIndex(user => user.rut === userRutToDelete);
+
+        if (userIndex !== -1) {
+            newUsers.splice(userIndex, 1); 
+            localStorage.setItem('newUsers', JSON.stringify(newUsers)); 
+
+
+            alert('Usuario eliminado correctamente.');
+        } else {
+            alert('El usuario con el rut ingresado no fue encontrado en el local storage.');
+        }
+    } else {
+        alert('Solo los administradores pueden eliminar usuarios.');
+    }
+    
 }

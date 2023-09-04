@@ -1,0 +1,21 @@
+Alumnos:
+- Diego Garay
+- Joao Corozo
+- Esteban Tupiño
+
+
+
+
+Detalles:
+
+No se pudo utilizar una base de datos como
+mongoDB o SQL debido a que no hubieron clases
+relacionadas a el uso de bases de datos + SQL
+para aprender sobre el tema. 
+Para solucionar esto se utiliza una mezcla de un archivo
+JSON + LocalStorage en casos puntuales para usar la aplicacion.
+
+Debido a que tampoco se paso como hacer una aplicacion en clases,
+en este caso se utiliza un archivo .html junto con un JS
+para hacer algo lo mas cercano posible a una aplicacion movil 
+que cumpla con todos los requerimientos indicados.
